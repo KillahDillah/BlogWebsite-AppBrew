@@ -1,7 +1,22 @@
 <%- include('partials/header') -%>
 <h1>Compose</h1>
 <form action="/compose" method="post">
-  <input type="text" name="newPost" />
-  <button type="submit" name="publishPost">Publish</button>
+  <label for="postTitle">Title</label>
+  <input
+    type="text"
+    name="postTitle"
+    class="form-control"
+    aria-label="post title"
+  />
+  <label for="newPost">Post</label>
+  <textarea
+    name="newPost"
+    aria-label="With textarea"
+    class="form-control"
+  ></textarea>
+  <br />
+  <button type="button" name="publishPost" class="btn btn-outline-secondary">
+    Publish
+  </button>
 </form>
 <%- include('partials/footer') -%>
