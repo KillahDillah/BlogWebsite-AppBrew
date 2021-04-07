@@ -13,6 +13,8 @@ const contactContent =
 
 const app = express();
 
+let posts = [];
+
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
@@ -22,6 +24,7 @@ app.get("/", function (req, res) {
   res.render("home.ejs", {
     content: homeStartingContent,
   });
+  console.log(posts);
 });
 
 app.get("/about", function (req, res) {
@@ -41,7 +44,13 @@ app.get("/compose", function (req, res) {
 });
 
 app.post("/compose", function (req, res) {
-  console.log(req.body, "hey"); // req.body will only display elements/data with the 'name' attribute
+  let post = {
+    newPostTitle: req.body.newPostTitle,
+    newPostBody: req.body.newPostBody,
+  };
+  posts.push(post);
+
+  res.redirect("/");
 });
 
 app.listen(3000, function () {
