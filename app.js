@@ -23,8 +23,8 @@ app.use(express.static("public"));
 app.get("/", function (req, res) {
   res.render("home.ejs", {
     content: homeStartingContent,
+    posts: posts,
   });
-  console.log(posts);
 });
 
 app.get("/about", function (req, res) {
@@ -45,8 +45,8 @@ app.get("/compose", function (req, res) {
 
 app.post("/compose", function (req, res) {
   let post = {
-    newPostTitle: req.body.newPostTitle,
-    newPostBody: req.body.newPostBody,
+    title: req.body.newPostTitle,
+    body: req.body.newPostBody,
   };
   posts.push(post);
 
