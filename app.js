@@ -40,6 +40,10 @@ app.get("/compose", function (req, res) {
   res.render("compose");
 });
 
+app.post("/compose", function (req, res) {
+  console.log(req.body, "hey"); // req.body will only display elements/data with the 'name' attribute
+});
+
 app.listen(3000, function () {
   console.log("Server started on port 3000");
 });
