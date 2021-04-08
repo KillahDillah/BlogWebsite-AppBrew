@@ -54,7 +54,15 @@ app.post("/compose", function (req, res) {
 
 app.get("/posts/:postId", function (req, res) {
   res.send(req.params);
-  console.log(req.params); //https://expressjs.com/en/guide/routing.html
+  // console.log(req.params, posts); //https://expressjs.com/en/guide/routing.html
+  for (let i = 0; i < posts.length; i++) {
+    console.log(posts[i], "logging");
+    if (req.params.postId === posts[i].title) {
+      console.log("match found");
+    } else {
+      console.log("no match");
+    }
+  }
 });
 
 app.listen(3000, function () {
