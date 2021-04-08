@@ -49,8 +49,12 @@ app.post("/compose", function (req, res) {
     body: req.body.newPostBody,
   };
   posts.push(post);
-
   res.redirect("/");
+});
+
+app.get("/posts/:postId", function (req, res) {
+  res.send(req.params);
+  console.log(req.params); //https://expressjs.com/en/guide/routing.html
 });
 
 app.listen(3000, function () {
