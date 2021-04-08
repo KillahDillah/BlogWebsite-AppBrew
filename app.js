@@ -52,17 +52,16 @@ app.post("/compose", function (req, res) {
   res.redirect("/");
 });
 
-app.get("/posts/:postId", function (req, res) {
-  res.send(req.params);
+app.get("/posts/:postName", function (req, res) {
+  const requestedTitle = req.params.postName;
   // console.log(req.params, posts); //https://expressjs.com/en/guide/routing.html
-  for (let i = 0; i < posts.length; i++) {
-    console.log(posts[i], "logging");
-    if (req.params.postId === posts[i].title) {
-      console.log("match found");
-    } else {
-      console.log("no match");
+
+  posts.forEach(function (post) {
+    const storedTitle = post.title;
+    if (storedTitle === requestedTitle) {
+      console.log("match!");
     }
-  }
+  });
 });
 
 app.listen(3000, function () {
