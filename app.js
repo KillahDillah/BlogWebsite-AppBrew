@@ -54,8 +54,8 @@ app.post("/compose", function (req, res) {
 });
 
 app.get("/posts/:postName", function (req, res) {
-  const requestedTitle = req.params.postName;
-  // console.log(req.params, posts); //https://expressjs.com/en/guide/routing.html
+  const requestedTitle = lowerCase(req.params.postName);
+  console.log(requestedTitle, "check", req.params.postName);
 
   posts.forEach((post) => {
     const storedTitle = post.title;
