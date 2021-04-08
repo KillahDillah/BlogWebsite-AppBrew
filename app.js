@@ -56,7 +56,7 @@ app.get("/posts/:postName", function (req, res) {
   const requestedTitle = req.params.postName;
   // console.log(req.params, posts); //https://expressjs.com/en/guide/routing.html
 
-  posts.forEach(function (post) {
+  posts.forEach((post) => {
     const storedTitle = post.title;
     if (storedTitle === requestedTitle) {
       console.log("match!");
