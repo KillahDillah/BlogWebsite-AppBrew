@@ -28,7 +28,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-  console.log(posts, "posts in home");
   res.render("home.ejs", {
     content: homeStartingContent,
     posts: posts,
@@ -62,12 +61,14 @@ app.post("/compose", function (req, res) {
 
 app.get("/posts/:postName", function (req, res) {
   const requestedTitle = lowerCase(req.params.postName);
-  console.log(requestedTitle, "check", req.params.postName);
 
   posts.forEach((post) => {
-    const storedTitle = post.title;
+    const storedTitle = lowerCase(post.title);
+    const storedBody = post.body;
     if (storedTitle === requestedTitle) {
-      res.render("post", { title: storedTitle });
+      res.render("post", { title: storedTitle, body: storedBody });
+    } else {
+      console.log("fail");
     }
   });
 });
